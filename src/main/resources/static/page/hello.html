@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+
+/*     if(typeof jQuery== "undefined"){
+
+              window.alert("jQuery引用失败!");
+
+           }else{
+
+              window.alert("jQuery引用成功!");
+
+           }*/
+
+           $(function () {
+                var btn = $("#btn");
+             // 点击事件-->
+               btn.click(function () {
+                   $.ajax({
+                       url:'/play/playAanOrder',
+                       type:'get',
+
+                       dataType:'json',
+                       async:false,
+                       success : function (data) { //如果请求成功返回data
+                           console.log(data.obj)
+                           alert("请求成功")
+                           var tt = data.obj;
+                           // console.log(tt.id)
+                           for (var i in tt){
+                                $("id").val(i.id);
+                           }
+                           // console.log(data)
+
+                       },
+                       error:function () {
+                           alert("请求失败")
+                       }
+
+                   })
+             })
+           })
+</script>
+</head>
+<body>
+<form action="/demo/demo_form.asp">
+    id:<br>
+    <input type="text" name="id" id="id" value="" >
+    <br>
+    name:<br>
+    <input type="text" name="username" >
+    <br>
+    password:<br>
+    <input type="text" name="user_password" >
+    <br>
+    date:<br>
+    <input type="text" name="createTime" >
+    <br>
+    <input type="button" value="查询" id="btn">
+
+</form>
+</body>
+</html>

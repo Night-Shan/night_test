@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.night.mapper.PlayMapper">
+    <resultMap id="idPlay" type="com.night.pojo.Play">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="userpassword" column="user_password"/>
+        <result property="createTime" column="createTime"/>
+
+    </resultMap>
+
+    <resultMap id="playAanOrder" type="com.night.pojo.PlayAndOrderVo">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="userpassword" column="user_password"/>
+        <result property="createTime" column="createTime"/>
+        <result property="orderid" column="order_id"/>
+        <result property="ordername" column="order_name"/>
+        <result property="orderclass" column="order_class"/>
+    </resultMap>
+
+    <select id="playAanOrder" resultMap="playAanOrder">
+        select p.*,o.* from  play p INNER JOIN T_order o on p.order_id = o.order_id
+    </select>
+
+    <select id="getAll" resultType="com.night.pojo.Play">
+        select * from  play
+    </select>
+
+    <select id="getPlayAll" resultMap="idPlay"  parameterType="java.util.Map">
+        select * from  play where username = #{username} and user_password = #{user_password};
+    </select>
+</mapper>
