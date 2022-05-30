@@ -41,7 +41,7 @@ public class PlayController {
 
     }
 
-    @GetMapping("/selectPage")
+    @GetMapping("/selectPage2")
     public R getPlayPage(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize){
         return R.testR(playServicce.getPlayPage(pageNum,pageSize),true);
     }
