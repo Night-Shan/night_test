@@ -32,4 +32,8 @@
     <select id="getPlayAll" resultMap="idPlay"  parameterType="java.util.Map">
         select * from  play where username = #{username} and user_password = #{user_password};
     </select>
+
+    <update id="getId"  parameterType="com.night.pojo.Play" >
+
+    </update>
 </mapper>
